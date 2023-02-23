@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // Hardcoded bird data for testing purposes
-const birds = [
+let birds = [
   { id: '1', species: 'Pigeon', color: 'Grey' },
   { id: '2', species: 'Crow', color: 'Black' },
   { id: '3', species: 'Parrot', color: 'Green' },
@@ -23,6 +23,40 @@ app.get('/birds/:id', (req, res) => {
   const bird = birds.find(bird => bird.id === id);
   if (bird) {
     res.status(200).json(bird);
+  } else {
+    res.status(404).json({ error: 'Bird not found' });
+  }
+});
+
+// POST a new bird
+app.post('/birds', (req, res) => {
+  const bird = req.body;
+  const id = (birds.length + 1).toString();
+  bird.id = id;
+  birds.push(bird);
+  res.status(201).json({ message: 'Bird created', bird });
+});
+
+// PUT update a bird by id
+app.put('/birds/:id', (req, res) => {
+  const id = req.params.id;
+  const index = birds.findIndex(bird => bird.id === id);
+  if (index !== -1) {
+    const updatedBird = { ...birds[index], ...req.body, id };
+    birds[index] = updatedBird;
+    res.status(200).json({ message: 'Bird updated', bird: updatedBird });
+  } else {
+    res.status(404).json({ error: 'Bird not found' });
+  }
+});
+
+// DELETE a bird by id
+app.delete('/birds/:id', (req, res) => {
+  const id = req.params.id;
+  const index = birds.findIndex(bird => bird.id === id);
+  if (index !== -1) {
+    birds.splice(index, 1);
+    res.status(200).json({ message: 'Bird deleted' });
   } else {
     res.status(404).json({ error: 'Bird not found' });
   }
