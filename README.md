@@ -40,24 +40,24 @@ npm run dev
 
 4. Open your browser and visit http://localhost:3000
 
-Login Credentials
-The application uses hardcoded email and password credentials for demonstration purposes:
+## Login Credentials
+- The application uses hardcoded email and password credentials for demonstration purposes:
 
-Email: user@example.com
-Password: password
+- Email: user@example.com
+- Password: password
 
-Development Tasks
-npm run dev - Starts the development server with SCSS compilation and auto-reloading
-npm run compile:scss - Compiles and minifies SCSS files to the public/css directory
-npm run watch:scss - Watches SCSS files for changes and compiles them automatically
-npm run start - Starts the Express server without auto-reloading
-npm-run-all --parallel server watch:scss - Starts both the server with nodemon and the SCSS compiler using npm-run-all
+## Development Tasks
+- npm run dev - Starts the development server with SCSS compilation and auto-reloading
+- npm run compile:scss - Compiles and minifies SCSS files to the public/css directory
+- npm run watch:scss - Watches SCSS files for changes and compiles them automatically
+- npm run start - Starts the Express server without auto-reloading
+- npm-run-all --parallel server watch:scss - Starts both the server with nodemon and the SCSS compiler using npm-run-all
 
-Customization
+## Customization
 You can customize the application by modifying the EJS templates, SCSS files, and Express routes.
 
-src/views - EJS templates
-src/scss - SCSS files
-src/app.js - Express routes
-License
-This project is licensed under the MIT License.
+- src/views - EJS templates
+- src/scss - SCSS files
+- src/app.js - Express routes
+## License
+- This project is licensed under the MIT License.
