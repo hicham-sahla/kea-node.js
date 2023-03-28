@@ -43,8 +43,8 @@ npm run dev
 ## Login Credentials
 - The application uses hardcoded email and password credentials for demonstration purposes:
 
-- Email: user@example.com
-- Password: password
+- Email: admin@admin.com
+- Password: admin
 
 ## Development Tasks
 - npm run dev - Starts the development server with SCSS compilation and auto-reloading
