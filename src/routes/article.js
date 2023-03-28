@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { isLoggedIn } = require('../app.js');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 const articles = [
   {
@@ -48,4 +48,3 @@ router.get('/:slug', isLoggedIn, (req, res) => {
 
 module.exports = router;
 module.exports.articles = articles;
-
