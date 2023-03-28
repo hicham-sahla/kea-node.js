@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
 const path = require('path');
 const session = require('express-session');
@@ -9,7 +10,7 @@ const emailRouter = require('./routes/email');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
-  secret: 'your-secret-key', // is unsafe, will be moved to .env file in the future!
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 3600000 } // 1 hour

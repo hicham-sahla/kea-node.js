@@ -1,15 +1,17 @@
 // routes/email.js
-
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 
 const router = express.Router();
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT),
+  secure: process.env.SMTP_SECURE === 'true',
   auth: {
-    user: 'your-email@gmail.com',
-    pass: 'your-email-password',
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -21,14 +23,15 @@ router.post('/send-email', async (req, res) => {
   const { email } = req.body;
 
   const mailOptions = {
-    from: 'your-email@gmail.com', // Replace with your email
+    from: 'info@hichamsahla.nl',
     to: email,
-    subject: 'Test Email',
-    text: 'This is a test email sent with Nodemailer.',
+    subject: 'Nodemailer works! Assignment 1',
+    text: 'This is a test email sent with Nodemailer. IT WORKS!',
   };
 
   try {
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.response);
     res.redirect('/');
   } catch (error) {
     console.error('Error sending email:', error);
