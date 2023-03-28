@@ -37,7 +37,7 @@ app.get('/', isLoggedIn, (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render('login');
-});
+}); 
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
