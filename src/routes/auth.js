@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const isLoggedIn = require('../middleware/isLoggedIn');
 const { articles } = require('./article');
 
 const userEmail = 'admin@admin.com';
 const userPassword = 'admin';
 
-router.get('/', (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
   res.render('index', { articles });
 });
 
